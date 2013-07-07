@@ -1,22 +1,19 @@
-This file describes how to get everything installed in order to write
-your first test. There are four cases, depending on whether you
-already have Leiningen installed and whether this hotel's network is
-working.
+You'll run Clojure via a program named `Leiningen`. Clojure itself is
+a Java jar file. It, along with any Clojure packages you use, should
+be stored in a Maven repository in your home directory. To do the
+exercises, you'll have to install Leiningen and make sure the Maven
+repo has all the required jar files. There are four cases, depending
+on whether you already have Leiningen installed and whether this
+hotel's network is working.
 
 Note: I've assumed most people will have Unix laptops (Linux or
 Macs). I don't have installation instructions for Windows. Sorry.
 I suggest you pair up with a Unix person.
 
-If the network is working, you can get the workshop directory like this:
-
-   % git clone https://github.com/marick/lambda-jam
-
-You can also get it from one of the thumb drives that are floating
-around.
-
 All the instructions below assume you installed the workshop directory
-into `Desktop/lambda-jam`. Adjust as necessary. They also assume your
-current working directory is the root of the contents:
+into `Desktop/lambda-jam`. Adjust as necessary. They also assume
+you've changed your current working directory to the root of the
+contents:
 
    % cd ~/Desktop/lambda-jam
 
@@ -25,88 +22,155 @@ current working directory is the root of the contents:
 
 1. Give `lein midje` a trial run:
 
-   % cd life 
-   % lein midje
+       % cd robozzle 
+       % lein midje
 
-   You should see this message: "No facts were checked. Is that what
-   you wanted?"
+   You should see this message:
+
+       FAIL "It works end-to-end." at (core.clj:14)
+       Actual result did not agree with the checking function.
+               Actual result: false
+           Checking function: truthy
+       FAILURE: 1 check failed.  (But 1 succeeded.)
+       Subprocess failed
+
+   You may see this instead:
+
+       ^[[31mFAIL^[[0m "It works end-to-end." at (core.clj:14)
+       ...
+
+   That means ANSI color codes aren't working in your terminal. You can turn
+   them off like this:
+
+       % export MIDJE_COLORIZE=false
 
 
 ====== You already have Leiningen installed AND the network is NOT available.
 
-1. Save away your existing Maven (Java jar) repository:
-   % mv ~/.m2 ~/old-maven-repository
+1. Do you have an existing Maven repository? (You can check with `ls -ld ~/.m2`.)
+   If so, save it:
 
-2. Replace it with a prepopulated maven repository:
+       % mv ~/.m2 ~/old-maven-repository
 
-   % mv network-free-install/m2 ~/.m2 
+2. Replace it with a prepopulated Maven repository:
+
+       % mv network-free-install/m2 ~/.m2 
 
    (Note that the dot is important.)
 
 3. Give `lein midje` a trial run:
 
-   % cd life 
-   % lein midje
+       % cd robozzle 
+       % lein midje
 
-   You should see this message: "No facts were checked. Is that what
-   you wanted?"
+   You should see this message:
+
+       FAIL "It works end-to-end." at (core.clj:14)
+       Actual result did not agree with the checking function.
+               Actual result: false
+           Checking function: truthy
+       FAILURE: 1 check failed.  (But 1 succeeded.)
+       Subprocess failed
+
+   You may see this instead:
+
+       ^[[31mFAIL^[[0m "It works end-to-end." at (core.clj:14)
+       ...
+
+   That means ANSI color codes aren't working in your terminal. You can turn
+   them off like this:
+
+       % export MIDJE_COLORIZE=false
+
 
 ====== You do NOT have Leiningen installed BUT the network is available.
 
 1. Leiningen installs what it needs when it's first run, but you have to tell
    the shell where it is. The simple way to do that is the following:
 
-   % export PATH=$PATH:~/Desktop/lambda-jam/bin
+       % export PATH=$PATH:~/Desktop/lambda-jam/bin
 
    (Note: you must do that in each new shell / terminal window you open. You can 
    also add that line to a `~/.bashrc` or equivalent file, if you know how to do that.) 
 
 2. Make leiningen pull down all that it needs.
 
-   % lein 
+       % lein 
 
    You should see messages about downloading, then a list of available tasks.
 
 3. Make leiningen install everything else the exercises need:
 
-   % cd life 
-   % lein midje
+       % cd robozzle 
+       % lein midje
 
-   You should see this message: "No facts were checked. Is that what
-   you wanted?"
+   You should see this message:
+
+       FAIL "It works end-to-end." at (core.clj:14)
+       Actual result did not agree with the checking function.
+               Actual result: false
+           Checking function: truthy
+       FAILURE: 1 check failed.  (But 1 succeeded.)
+       Subprocess failed
+
+   You may see this instead:
+
+       ^[[31mFAIL^[[0m "It works end-to-end." at (core.clj:14)
+       ...
+
+   That means ANSI color codes aren't working in your terminal. You can turn
+   them off like this:
+
+       % export MIDJE_COLORIZE=false
+
 
 ====== You do NOT have Leiningen installed AND the network is NOT available.
 
-1. Leiningen installs what it needs when it's first run, but you have to tell
-   the shell where it is. The simple way to do that is the following:
+1. Tell the shell where Leiningen is. The simple way to do that is the following:
 
-   % export PATH=$PATH:~/Desktop/lambda-jam/bin
+       % export PATH=$PATH:~/Desktop/lambda-jam/bin
 
    (Note: you must do that in each new shell / terminal window you open. You can 
    also add that line to a `~/.bashrc` or equivalent file, if you know how to do that.) 
 
-2. Do you have an existing Maven (Java jarfile) repository? (You can check with `ls -ld ~/.m2`.)
+2. Do you have an existing Maven repository? (You can check with `ls -ld ~/.m2`.)
    If so, save it:
 
-   % mv ~/.m2 ~/old-maven-repository
+       % mv ~/.m2 ~/old-maven-repository
 
-3. Replace it with a prepopulated maven repository:
+3. Replace it with a prepopulated Maven repository:
 
-   % mv network-free-install/m2 ~/.m2 
+       % mv network-free-install/m2 ~/.m2 
 
    (Note that the dot is important.)
 
-4. Do Leiningen's initialization for it:
+4. Leiningen normally initializes itself by downloading files across the network.
+   Do its initialization for it:
 
-   % mv network-free-install/lein ~/.lein
+       % mv network-free-install/lein ~/.lein
 
    (Note that the dot is important.)
 
 5. Give `lein midje` a trial run:
 
-   % cd life
-   % lein midje
+       % cd robozzle
+       % lein midje
 
-   You should see this message: "No facts were checked. Is that what
-   you wanted?"
+   You should see this message:
+
+       FAIL "It works end-to-end." at (core.clj:14)
+       Actual result did not agree with the checking function.
+               Actual result: false
+           Checking function: truthy
+       FAILURE: 1 check failed.  (But 1 succeeded.)
+       Subprocess failed
+
+   If you see this instead:
+
+      ^[[31mFAIL^[[0m "It works end-to-end." at (core.clj:14)
+
+   ... ANSI color codes aren't working in your terminal. You can turn them off like this:
+
+       % export MIDJE_COLORIZE=false
+
 
