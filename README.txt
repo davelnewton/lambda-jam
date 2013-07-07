@@ -25,7 +25,12 @@ Clojure set API is in `clojure-set-api.html`.
     
     ======================================================================
     Loading (robozzle.core robozzle.t-core)
-    No facts were checked. Is that what you wanted?
+
+    FAIL "It works end-to-end." at (core.clj:14)
+    Actual result did not agree with the checking function.
+            Actual result: false
+        Checking function: truthy
+    FAILURE: 1 check failed.  (But 1 succeeded.)
     true
     user=>
 
