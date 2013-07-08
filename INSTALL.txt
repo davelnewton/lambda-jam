@@ -10,7 +10,7 @@ Note: I've assumed most people will have Unix laptops (Linux or
 Macs). I don't have installation instructions for Windows. Sorry.
 I suggest you pair up with a Unix person.
 
-All the instructions below assume you installed the workshop directory
+All the instructions below assume you put the workshop materials
 into `Desktop/lambda-jam`. Adjust as necessary. They also assume
 you've changed your current working directory to the root of the
 contents:
@@ -85,13 +85,14 @@ contents:
 
 ====== You do NOT have Leiningen installed BUT the network is available.
 
-1. Leiningen installs what it needs when it's first run, but you have to tell
-   the shell where it is. The simple way to do that is the following:
+1. Leiningen is a shell script and a lot of Jar files. The script is in 
+   `~/Desktop/lambda-jam/bin`. Tell your shell where it is. The easy way
+   to do that is:
 
        % export PATH=$PATH:~/Desktop/lambda-jam/bin
 
    (Note: you must do that in each new shell / terminal window you open. You can 
-   also add that line to a `~/.bashrc` or equivalent file, if you know how to do that.) 
+   also add that line to a `~/.bashrc` or equivalent file.) 
 
 2. Make leiningen pull down all that it needs.
 
@@ -99,12 +100,13 @@ contents:
 
    You should see messages about downloading, then a list of available tasks.
 
-3. Make leiningen install everything else the exercises need:
+3. By running some tests, you'll make Leiningen install everything
+   else the exercises need:
 
        % cd robozzle 
        % lein midje
 
-   You should see this message:
+   After a lot of installation messages, you should see this:
 
        FAIL "It works end-to-end." at (core.clj:14)
        Actual result did not agree with the checking function.
@@ -126,12 +128,14 @@ contents:
 
 ====== You do NOT have Leiningen installed AND the network is NOT available.
 
-1. Tell the shell where Leiningen is. The simple way to do that is the following:
+1. Leiningen is a shell script and a lot of Jar files. The script is in 
+   `~/Desktop/lambda-jam/bin`. Tell your shell where it is. The easy way
+   to do that is:
 
        % export PATH=$PATH:~/Desktop/lambda-jam/bin
 
    (Note: you must do that in each new shell / terminal window you open. You can 
-   also add that line to a `~/.bashrc` or equivalent file, if you know how to do that.) 
+   also add that line to a `~/.bashrc` or equivalent file.) 
 
 2. Do you have an existing Maven repository? (You can check with `ls -ld ~/.m2`.)
    If so, save it:
